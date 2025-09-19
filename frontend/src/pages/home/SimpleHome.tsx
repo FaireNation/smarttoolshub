@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SimpleHome: React.FC = () => {
   return (
@@ -13,9 +14,11 @@ const SimpleHome: React.FC = () => {
               </div>
               <span className="text-xl font-bold text-gray-900">SmartTools Hub</span>
             </div>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
-              Get Started
-            </button>
+            <Link to="/products">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200">
+                Get Started
+              </button>
+            </Link>
           </div>
         </div>
       </header>
@@ -30,9 +33,11 @@ const SimpleHome: React.FC = () => {
             <p className="text-xl mb-8 text-blue-100">
               Discover quality tools from top brands, delivered across Nigeria with Pay-on-Delivery option
             </p>
-            <button className="bg-white text-blue-600 hover:bg-gray-100 font-medium py-3 px-8 rounded-lg transition-colors duration-200">
-              Shop Now
-            </button>
+            <Link to="/products">
+              <button className="bg-white text-blue-600 hover:bg-gray-100 font-medium py-3 px-8 rounded-lg transition-colors duration-200">
+                Shop Now
+              </button>
+            </Link>
           </div>
         </div>
       </section>
