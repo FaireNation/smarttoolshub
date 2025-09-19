@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/home/Home';
+import SimpleHome from './pages/home/SimpleHome';
 import './index.css';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<SimpleHome />} />
           {/* TODO: Add more routes */}
           <Route path="/products" element={<div>Products Page - Coming Soon</div>} />
           <Route path="/products/:id" element={<div>Product Detail Page - Coming Soon</div>} />
