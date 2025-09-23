@@ -22,22 +22,22 @@ import {
     X,
 } from "lucide-react";
 import { Product } from "../types";
+import { useCart } from '../context/CartContext';
 
 interface QuickViewModalProps {
     isOpen: boolean;
     onOpenChange: (isOpen: boolean) => void;
     product: Product | null;
-    onAddToCart: (product: Product, quantity: number) => void;
-    onAddToWishlist: (product: Product) => void;
+    onAddToWishlist?: (product: Product) => void;
 }
 
 const QuickViewModal: React.FC<QuickViewModalProps> = ({
     isOpen,
     onOpenChange,
     product,
-    onAddToCart,
     onAddToWishlist,
 }) => {
+    const { addToCart } = useCart();
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [isAddingToCart, setIsAddingToCart] = useState(false);
@@ -54,7 +54,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
         if (!product) return;
         setIsAddingToCart(true);
         try {
-            await onAddToCart(product, quantity);
+            addToCart(product, quantity);
             // Show success feedback here
         } catch (error) {
             console.error('Error adding to cart:', error);
@@ -64,7 +64,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
     };
 
     const handleAddToWishlist = async () => {
-        if (!product) return;
+        if (!product || !onAddToWishlist) return;
         setIsAddingToWishlist(true);
         try {
             await onAddToWishlist(product);

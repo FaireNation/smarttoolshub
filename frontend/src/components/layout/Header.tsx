@@ -16,9 +16,11 @@ import {
     DropdownItem,
 } from "@heroui/react";
 import { ShoppingCart, User, Menu, Package, Wrench } from "lucide-react";
+import { useCart } from '../../context/CartContext';
 
 const Header: React.FC = () => {
     const location = useLocation();
+    const { cart } = useCart();
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const menuItems = [
@@ -92,7 +94,12 @@ const Header: React.FC = () => {
             <NavbarContent justify="end">
                 {/* Shopping cart */}
                 <NavbarItem>
-                    <Badge content="3" color="secondary" size="sm">
+                    <Badge
+                        content={cart.totalItems > 0 ? cart.totalItems.toString() : ""}
+                        color="secondary"
+                        size="sm"
+                        isInvisible={cart.totalItems === 0}
+                    >
                         <Button
                             as={Link}
                             to="/cart"

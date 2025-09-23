@@ -52,6 +52,6 @@ module.exports = {
         },
       },
     }),
-    require("@tailwindcss/forms")
+    // Removed @tailwindcss/forms as it conflicts with HeroUI input styles
   ],
 }

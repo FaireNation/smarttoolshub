@@ -13,28 +13,37 @@ import {
     ShoppingCart,
     Heart,
     Eye,
+    Check,
 } from "lucide-react";
 import { Product } from "../types";
+import { useCart } from '../context/CartContext';
 
 interface ProductCardProps {
     product: Product;
     onQuickView?: (product: Product) => void;
     onAddToWishlist?: (product: Product) => void;
-    onAddToCart?: (product: Product) => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
     product,
     onQuickView,
     onAddToWishlist,
-    onAddToCart,
 }) => {
+    const { addToCart, isInCart, getItemQuantity } = useCart();
+
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('en-NG', {
             style: 'currency',
             currency: 'NGN'
         }).format(price / 100);
     };
+
+    const handleAddToCart = () => {
+        addToCart(product, 1);
+    };
+
+    const inCart = isInCart(product.id);
+    const quantity = getItemQuantity(product.id);
 
     // Grid view (default)
     return (
@@ -135,15 +144,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
             <CardFooter className="px-4 pb-4">
                 <Button
-                    color="primary"
-                    variant="solid"
+                    color={inCart ? "success" : "primary"}
+                    variant={inCart ? "flat" : "solid"}
                     fullWidth
-                    startContent={<ShoppingCart size={16} />}
+                    startContent={inCart ? <Check size={16} /> : <ShoppingCart size={16} />}
                     isDisabled={!product.inStock}
                     className="font-medium mb-3"
-                    onClick={() => onAddToCart?.(product)}
+                    onClick={handleAddToCart}
                 >
-                    {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+                    {!product.inStock
+                        ? 'Out of Stock'
+                        : inCart
+                            ? `In Cart (${quantity})`
+                            : 'Add to Cart'
+                    }
                 </Button>
             </CardFooter>
         </Card>

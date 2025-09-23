@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    Card, Input, Button, Slider, CheckboxGroup, Checkbox, Divider,
+    Card, Button, Slider, CheckboxGroup, Checkbox, Divider,
     Select, SelectItem, Chip, Pagination, Breadcrumbs, BreadcrumbItem,
     useDisclosure
 } from "@heroui/react";
@@ -8,6 +8,7 @@ import { Search, Grid, List, SlidersHorizontal } from 'lucide-react';
 import Layout from '../../components/layout/Layout';
 import ProductCard from '../../components/ProductCard';
 import QuickViewModal from '../../components/QuickViewModal';
+import Input from '../../components/ui/Input';
 import { Product } from '../../types';
 import { products, getAllCategories, getAllBrands, getSaleProducts, getInStockProducts } from '../../data/products';
 
@@ -311,9 +312,6 @@ const ProductsPage: React.FC = () => {
                                             onAddToWishlist={(product) => {
                                                 console.log('Added to wishlist:', product.name);
                                             }}
-                                            onAddToCart={(product) => {
-                                                console.log('Added to cart:', product.name);
-                                            }}
                                         />
                                     ))}
                                 </div>
@@ -365,9 +363,6 @@ const ProductsPage: React.FC = () => {
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
                 product={selectedProduct}
-                onAddToCart={(product, quantity) => {
-                    console.log('Added to cart:', product.name, 'Quantity:', quantity);
-                }}
                 onAddToWishlist={(product) => {
                     console.log('Added to wishlist:', product.name);
                 }}

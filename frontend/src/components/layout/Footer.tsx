@@ -146,27 +146,6 @@ const Footer: React.FC = () => {
                             </span>
                         </p>
                     </div>
-
-                    <div className="flex flex-wrap items-center justify-center gap-6">
-                        <Link
-                            to="/privacy"
-                            className="text-sm text-default-600 hover:text-primary transition-colors font-medium"
-                        >
-                            Privacy Policy
-                        </Link>
-                        <Link
-                            to="/terms"
-                            className="text-sm text-default-600 hover:text-primary transition-colors font-medium"
-                        >
-                            Terms of Service
-                        </Link>
-                        <Link
-                            to="/return-policy"
-                            className="text-sm text-default-600 hover:text-primary transition-colors font-medium"
-                        >
-                            Return Policy
-                        </Link>
-                    </div>
                 </div>
 
                 {/* Trust Badges */}

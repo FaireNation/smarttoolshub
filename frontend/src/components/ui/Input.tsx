@@ -18,8 +18,22 @@ const Input: React.FC<InputProps> = ({
   size = 'md',
   radius = 'md',
   color = 'primary',
+  placeholder,
   ...props
 }) => {
+  // Ensure accessibility: if no label and no aria-label, use placeholder as aria-label
+  const accessibilityProps = {
+    ...props,
+    ...(
+      !label &&
+        !props['aria-label'] &&
+        !props['aria-labelledby'] &&
+        placeholder
+        ? { 'aria-label': placeholder }
+        : {}
+    )
+  };
+
   return (
     <div className="space-y-1">
       {label && (
@@ -32,6 +46,7 @@ const Input: React.FC<InputProps> = ({
         size={size}
         radius={radius}
         color={color}
+        placeholder={placeholder}
         isInvalid={!!error}
         errorMessage={error}
         description={helperText}
@@ -63,7 +78,7 @@ const Input: React.FC<InputProps> = ({
             "group-data-[invalid=true]:border-danger",
           ],
         }}
-        {...props}
+        {...accessibilityProps}
       />
     </div>
   );
