@@ -121,7 +121,3 @@ performance = 0.9
 accessibility = 0.9
 best-practices = 0.9
 seo = 0.9
-
-# Edge handlers (optional, for advanced use cases)
-[edge_functions]
-directory = "netlify/edge-functions"
