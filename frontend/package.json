@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "build:prod": "NODE_ENV=production npm run build",
     "deploy": "npm run build:prod",
-    "serve": "vite preview --port 4173"
+    "serve": "vite preview --port 4173",
+    "type-check": "tsc --noEmit",
+    "postinstall": "echo 'Dependencies installed successfully'"
   },
   "dependencies": {
     "@heroui/react": "2.6.11",

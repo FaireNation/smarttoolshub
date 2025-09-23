@@ -15,6 +15,12 @@ NODE_VERSION = "18"
 # NPM version to use (optional)
 NPM_VERSION = "9"
 
+# Skip husky install in CI
+HUSKY = "0"
+
+# CI environment
+CI = "true"
+
 # Production context: all deploys from the Production branch
 [context.production]
 command = "npm run build"
