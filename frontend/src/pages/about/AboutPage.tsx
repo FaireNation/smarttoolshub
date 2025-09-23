@@ -3,7 +3,6 @@ import {
     Card,
     CardBody,
     Image,
-    Button,
     Chip,
 } from "@heroui/react";
 import {
@@ -15,9 +14,7 @@ import {
     Truck,
     Star,
     Target,
-    Heart,
     CheckCircle,
-    Phone,
 } from "lucide-react";
 import Layout from '../../components/layout/Layout';
 
