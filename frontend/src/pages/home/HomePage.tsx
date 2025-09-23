@@ -128,6 +128,8 @@ const HomePage: React.FC = () => {
                                     Shop Now
                                 </Button>
                                 <Button
+                                    as={Link}
+                                    to="/about"
                                     variant="bordered"
                                     size="lg"
                                     className="border-white text-white font-semibold hover:bg-white/10"
