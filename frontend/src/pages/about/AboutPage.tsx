@@ -19,9 +19,9 @@ import {
     CheckCircle,
     Phone,
 } from "lucide-react";
-import ModernLayout from '../../components/layout/ModernLayout';
+import Layout from '../../components/layout/Layout';
 
-const ModernAboutPage: React.FC = () => {
+const AboutPage: React.FC = () => {
     const stats = [
         { number: "10,000+", label: "Happy Customers", icon: <Users size={24} /> },
         { number: "5,000+", label: "Products Sold", icon: <Award size={24} /> },
@@ -98,7 +98,7 @@ const ModernAboutPage: React.FC = () => {
     ];
 
     return (
-        <ModernLayout>
+        <Layout>
             {/* Hero Section */}
             <section className="relative bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-blue-950 dark:to-indigo-950 overflow-hidden">
                 <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
@@ -274,8 +274,8 @@ const ModernAboutPage: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </ModernLayout>
+        </Layout>
     );
 };
 
-export default ModernAboutPage;
+export default AboutPage;

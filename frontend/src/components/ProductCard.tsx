@@ -16,14 +16,14 @@ import {
 } from "lucide-react";
 import { Product } from "../types";
 
-interface ModernProductCardProps {
+interface ProductCardProps {
     product: Product;
     onQuickView?: (product: Product) => void;
     onAddToWishlist?: (product: Product) => void;
     onAddToCart?: (product: Product) => void;
 }
 
-const ModernProductCard: React.FC<ModernProductCardProps> = ({
+const ProductCard: React.FC<ProductCardProps> = ({
     product,
     onQuickView,
     onAddToWishlist,
@@ -150,4 +150,4 @@ const ModernProductCard: React.FC<ModernProductCardProps> = ({
     );
 };
 
-export default ModernProductCard;
+export default ProductCard;

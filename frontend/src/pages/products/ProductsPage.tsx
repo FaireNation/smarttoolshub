@@ -5,14 +5,14 @@ import {
     useDisclosure
 } from "@heroui/react";
 import { Search, Grid, List, SlidersHorizontal } from 'lucide-react';
-import ModernLayout from '../../components/layout/ModernLayout';
-import ModernProductCard from '../../components/ModernProductCard';
+import Layout from '../../components/layout/Layout';
+import ProductCard from '../../components/ProductCard';
 import QuickViewModal from '../../components/QuickViewModal';
 import { Product } from '../../types';
 import { products, getAllCategories, getAllBrands, getSaleProducts, getInStockProducts } from '../../data/products';
 
 // Updated Product interface
-const ModernProductsPage: React.FC = () => {
+const ProductsPage: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -90,7 +90,7 @@ const ModernProductsPage: React.FC = () => {
     }, [searchTerm, selectedCategories, selectedBrands, priceRange, sortBy]);
 
     return (
-        <ModernLayout>
+        <Layout>
             {/* Hero Section with Breadcrumbs */}
             <div className="bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-blue-950 dark:to-indigo-950 border-b">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -301,7 +301,7 @@ const ModernProductsPage: React.FC = () => {
                                     : 'grid-cols-1'
                                     }`}>
                                     {paginatedProducts.map((product: Product) => (
-                                        <ModernProductCard
+                                        <ProductCard
                                             key={product.id}
                                             product={product}
                                             onQuickView={(product) => {
@@ -372,8 +372,8 @@ const ModernProductsPage: React.FC = () => {
                     console.log('Added to wishlist:', product.name);
                 }}
             />
-        </ModernLayout>
+        </Layout>
     );
 };
 
-export default ModernProductsPage;
+export default ProductsPage;

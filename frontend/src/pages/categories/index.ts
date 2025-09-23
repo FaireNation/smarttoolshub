@@ -1,2 +1,2 @@
-export { default as ModernCategoriesPage } from './ModernCategoriesPage';
-export { default as ModernCategoryPage } from './ModernCategoryPage';
+export { default as CategoriesPage } from './CategoriesPage';
+export { default as CategoryPage } from './CategoryPage';

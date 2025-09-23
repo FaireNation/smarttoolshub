@@ -11,14 +11,14 @@ import {
 import {
     ArrowLeft,
 } from "lucide-react";
-import ModernLayout from '../../components/layout/ModernLayout';
-import ModernProductCard from '../../components/ModernProductCard';
+import Layout from '../../components/layout/Layout';
+import ProductCard from '../../components/ProductCard';
 import { categories } from '../../data/categories';
 import { products } from '../../data/products';
 
 type SortOption = 'name' | 'price-low' | 'price-high' | 'rating' | 'newest';
 
-const ModernCategoryPage: React.FC = () => {
+const CategoryPage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const [sortBy, setSortBy] = useState<SortOption>('name');
     const [currentPage, setCurrentPage] = useState(1);
@@ -70,7 +70,7 @@ const ModernCategoryPage: React.FC = () => {
     const IconComponent = currentCategory.icon;
 
     return (
-        <ModernLayout>
+        <Layout>
             {/* Breadcrumbs */}
             <section className="py-6 bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-blue-950 dark:to-indigo-950 border-b">
                 <div className="max-w-7xl mx-auto px-4">
@@ -169,7 +169,7 @@ const ModernCategoryPage: React.FC = () => {
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                 {paginatedProducts.map((product) => {
                                     return (
-                                        <ModernProductCard
+                                        <ProductCard
                                             key={product.id}
                                             product={product}
                                         />
@@ -212,8 +212,8 @@ const ModernCategoryPage: React.FC = () => {
                     )}
                 </div>
             </section>
-        </ModernLayout>
+        </Layout>
     );
 };
 
-export default ModernCategoryPage;
+export default CategoryPage;

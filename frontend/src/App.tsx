@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ModernHome from './pages/home/ModernHome';
-import ModernProductsPage from './pages/products/ModernProductsPage';
-import ModernCartPage from './pages/cart/ModernCartPage';
-import ModernAboutPage from './pages/about';
-import ModernContactPage from './pages/contact';
-import { ModernCategoriesPage, ModernCategoryPage } from './pages/categories';
+import HomePage from './pages/home/HomePage';
+import ProductsPage from './pages/products/ProductsPage';
+import CartPage from './pages/cart/CartPage';
+import AboutPage from './pages/about';
+import ContactPage from './pages/contact';
+import { CategoriesPage, CategoryPage } from './pages/categories';
 import './index.css';
 
 function App() {
@@ -12,13 +12,13 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<ModernHome />} />
-          <Route path="/products" element={<ModernProductsPage />} />
-          <Route path="/categories" element={<ModernCategoriesPage />} />
-          <Route path="/categories/:slug" element={<ModernCategoryPage />} />
-          <Route path="/cart" element={<ModernCartPage />} />
-          <Route path="/about" element={<ModernAboutPage />} />
-          <Route path="/contact" element={<ModernContactPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/categories/:slug" element={<CategoryPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           {/* TODO: Add more routes */}
           <Route path="/products/:id" element={<div>Product Detail Page - Coming Soon</div>} />
           <Route path="/checkout" element={<div>Checkout Page - Coming Soon</div>} />

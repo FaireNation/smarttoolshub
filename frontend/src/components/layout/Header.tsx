@@ -17,7 +17,7 @@ import {
 } from "@heroui/react";
 import { ShoppingCart, User, Menu, Package, Wrench } from "lucide-react";
 
-const ModernHeader: React.FC = () => {
+const Header: React.FC = () => {
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -162,4 +162,4 @@ const ModernHeader: React.FC = () => {
     );
 };
 
-export default ModernHeader;
+export default Header;

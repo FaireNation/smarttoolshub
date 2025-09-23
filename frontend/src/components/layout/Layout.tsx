@@ -1,22 +1,22 @@
 import React from 'react';
-import ModernHeader from './ModernHeader';
-import ModernFooter from './ModernFooter';
+import Header from './Header';
+import Footer from './Footer';
 
-interface ModernLayoutProps {
+interface LayoutProps {
     children: React.ReactNode;
     className?: string;
 }
 
-const ModernLayout: React.FC<ModernLayoutProps> = ({ children, className = "" }) => {
+const Layout: React.FC<LayoutProps> = ({ children, className = "" }) => {
     return (
         <div className="min-h-screen flex flex-col bg-background">
-            <ModernHeader />
+            <Header />
             <main className={`flex-1 ${className}`}>
                 {children}
             </main>
-            <ModernFooter />
+            <Footer />
         </div>
     );
 };
 
-export default ModernLayout;
+export default Layout;

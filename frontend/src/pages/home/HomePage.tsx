@@ -16,10 +16,10 @@ import {
     Star,
     ArrowRight,
 } from "lucide-react";
-import ModernLayout from '../../components/layout/ModernLayout';
+import Layout from '../../components/layout/Layout';
 import { categories } from '../../data/categories';
 
-const ModernHome: React.FC = () => {
+const HomePage: React.FC = () => {
     // Color mapping for proper Tailwind CSS classes
     const getFeatureColors = (color: string) => {
         const colorMap = {
@@ -95,7 +95,7 @@ const ModernHome: React.FC = () => {
     ];
 
     return (
-        <ModernLayout>
+        <Layout>
             {/* Hero Section */}
             <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden">
                 {/* Background Pattern */}
@@ -309,8 +309,8 @@ const ModernHome: React.FC = () => {
                     </Button>
                 </div>
             </section>
-        </ModernLayout>
+        </Layout>
     );
 };
 
-export default ModernHome;
+export default HomePage;

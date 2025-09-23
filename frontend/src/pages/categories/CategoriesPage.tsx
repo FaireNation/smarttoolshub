@@ -7,12 +7,12 @@ import {
     Badge,
 } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
-import ModernLayout from '../../components/layout/ModernLayout';
+import Layout from '../../components/layout/Layout';
 import { categories } from '../../data/categories';
 
-const ModernCategoriesPage: React.FC = () => {
+const CategoriesPage: React.FC = () => {
     return (
-        <ModernLayout>
+        <Layout>
             {/* Header Section */}
             <section className="py-16 lg:py-24 bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-blue-950 dark:to-indigo-950">
                 <div className="max-w-7xl mx-auto px-4">
@@ -122,8 +122,8 @@ const ModernCategoriesPage: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </ModernLayout>
+        </Layout>
     );
 };
 
-export default ModernCategoriesPage;
+export default CategoriesPage;

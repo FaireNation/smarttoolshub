@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { categories } from '../../data/categories';
 
-const ModernFooter: React.FC = () => {
+const Footer: React.FC = () => {
     return (
         <footer className="relative overflow-hidden pt-20">
             {/* Background Pattern */}
@@ -177,4 +177,4 @@ const ModernFooter: React.FC = () => {
     );
 };
 
-export default ModernFooter;
+export default Footer;

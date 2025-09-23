@@ -15,9 +15,9 @@ import {
     Shield,
     Truck,
 } from "lucide-react";
-import ModernLayout from '../../components/layout/ModernLayout';
+import Layout from '../../components/layout/Layout';
 
-const ModernContactPage: React.FC = () => {
+const ContactPage: React.FC = () => {
     const contactInfo = [
         {
             icon: <Phone size={24} />,
@@ -68,7 +68,7 @@ const ModernContactPage: React.FC = () => {
     ];
 
     return (
-        <ModernLayout>
+        <Layout>
             {/* Hero Section */}
             <section className="relative bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-blue-950 dark:to-indigo-950 overflow-hidden">
                 <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
@@ -277,8 +277,8 @@ const ModernContactPage: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </ModernLayout>
+        </Layout>
     );
 };
 
-export default ModernContactPage;
+export default ContactPage;
