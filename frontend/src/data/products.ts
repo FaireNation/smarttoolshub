@@ -66,9 +66,9 @@ export const products: Product[] = [
     price: 89999, // Price in kobo (NGN 899.99)
     originalPrice: 109999,
     images: [
-      '/images/products/dewalt-drill-1.jpg',
-      '/images/products/dewalt-drill-2.jpg',
-      '/images/products/dewalt-drill-3.jpg'
+      'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=400&h=400&fit=crop'
     ],
     category: 'Power Tools',
     subcategory: 'Drills',
@@ -96,8 +96,8 @@ export const products: Product[] = [
     description: 'Brushless motor circular saw with 6-1/2" blade. Delivers up to 50% longer run time per charge.',
     price: 159999,
     images: [
-      '/images/products/makita-saw-1.jpg',
-      '/images/products/makita-saw-2.jpg'
+      'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=400&fit=crop'
     ],
     category: 'Power Tools',
     subcategory: 'Saws',
@@ -125,7 +125,7 @@ export const products: Product[] = [
     price: 24999,
     originalPrice: 29999,
     images: [
-      '/images/products/stanley-screwdriver-set.jpg'
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop'
     ],
     category: 'Hand Tools',
     brand: 'Stanley',
@@ -149,8 +149,8 @@ export const products: Product[] = [
     description: 'Wireless Bluetooth hearing protection with built-in AM/FM radio. Perfect for noisy work environments.',
     price: 79999,
     images: [
-      '/images/products/3m-worktunes-1.jpg',
-      '/images/products/3m-worktunes-2.jpg'
+      'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=400&fit=crop'
     ],
     category: 'Safety Equipment',
     brand: '3M',
@@ -176,7 +176,7 @@ export const products: Product[] = [
     description: '5-inch variable speed random orbital sander with dust collection system.',
     price: 119999,
     images: [
-      '/images/products/bosch-sander.jpg'
+      'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&h=400&fit=crop'
     ],
     category: 'Power Tools',
     subcategory: 'Sanders',
@@ -196,12 +196,12 @@ export const products: Product[] = [
     updatedAt: new Date('2024-03-12')
   },
   {
-    id: '6',
+    id: '10',
     name: 'Milwaukee Tape Measure 25ft',
     description: 'Heavy-duty tape measure with magnetic hook and bold markings for easy reading.',
     price: 34999,
     images: [
-      '/images/products/milwaukee-tape.jpg'
+      'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=400&fit=crop'
     ],
     category: 'Hand Tools',
     brand: 'Milwaukee',
@@ -219,12 +219,188 @@ export const products: Product[] = [
     isPopular: true,
     createdAt: new Date('2024-01-25'),
     updatedAt: new Date('2024-02-20')
+  },
+
+  // Additional comprehensive products for ModernProductsPage compatibility
+  {
+    id: '11',
+    name: 'Makita 18V LXT Circular Saw',
+    description: 'Powerful 18V LXT Lithium-Ion cordless 6-1/2" circular saw with electric brake.',
+    price: 159999,
+    images: [
+      'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=400&h=400&fit=crop'
+    ],
+    category: 'Power Tools',
+    brand: 'Makita',
+    inStock: true,
+    stockQuantity: 8,
+    rating: 4.8,
+    reviewCount: 142,
+    tags: ['circular-saw', '18v', 'cordless', 'brake'],
+    specifications: {
+      'Blade Size': '6-1/2 inch',
+      'Voltage': '18V LXT',
+      'Max Cutting Capacity': '2-1/4 inch',
+      'Electric Brake': 'Yes'
+    },
+    isPopular: true,
+    createdAt: new Date('2024-01-10'),
+    updatedAt: new Date('2024-02-10')
+  },
+  {
+    id: '12',
+    name: 'Stanley 25-Piece Screwdriver Set',
+    description: 'Professional screwdriver set with cushion grip handles and chrome vanadium steel shanks.',
+    price: 24999,
+    originalPrice: 29999,
+    images: [
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop'
+    ],
+    category: 'Hand Tools',
+    brand: 'Stanley',
+    inStock: true,
+    stockQuantity: 45,
+    rating: 4.5,
+    reviewCount: 98,
+    tags: ['screwdriver', 'set', 'professional', 'cushion-grip'],
+    specifications: {
+      'Piece Count': '25',
+      'Handle Type': 'Cushion Grip',
+      'Steel Type': 'Chrome Vanadium',
+      'Storage': 'Case Included'
+    },
+    isSale: true,
+    createdAt: new Date('2024-01-15'),
+    updatedAt: new Date('2024-02-05')
+  },
+  {
+    id: '13',
+    name: 'Bosch Professional Impact Driver',
+    description: 'Compact and powerful 18V impact driver with brushless motor technology.',
+    price: 125999,
+    images: [
+      'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=400&fit=crop'
+    ],
+    category: 'Power Tools',
+    brand: 'Bosch',
+    inStock: true,
+    stockQuantity: 12,
+    rating: 4.6,
+    reviewCount: 167,
+    tags: ['impact-driver', 'brushless', '18v', 'professional'],
+    specifications: {
+      'Voltage': '18V',
+      'Max Torque': '180 Nm',
+      'Motor Type': 'Brushless',
+      'Chuck': '1/4 inch hex'
+    },
+    createdAt: new Date('2024-01-20'),
+    updatedAt: new Date('2024-02-12')
+  },
+  {
+    id: '14',
+    name: 'Milwaukee Heavy-Duty Hammer',
+    description: 'Professional grade claw hammer with shock-absorbing handle and magnetic nail holder.',
+    price: 18999,
+    images: [
+      'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&h=400&fit=crop'
+    ],
+    category: 'Hand Tools',
+    brand: 'Milwaukee',
+    inStock: false,
+    stockQuantity: 0,
+    rating: 4.4,
+    reviewCount: 76,
+    tags: ['hammer', 'heavy-duty', 'shock-absorbing', 'magnetic'],
+    specifications: {
+      'Weight': '16 oz',
+      'Handle': 'Shock Absorbing',
+      'Head': 'Forged Steel',
+      'Nail Holder': 'Magnetic'
+    },
+    createdAt: new Date('2024-01-12'),
+    updatedAt: new Date('2024-02-18')
+  },
+  {
+    id: '15',
+    name: 'DeWalt Safety Hard Hat',
+    description: 'ANSI/ISEA Z89.1-2014 Type I compliant hard hat with 4-point ratchet suspension.',
+    price: 12999,
+    images: [
+      'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop'
+    ],
+    category: 'Safety Equipment',
+    brand: 'DEWALT',
+    inStock: true,
+    stockQuantity: 25,
+    rating: 4.3,
+    reviewCount: 45,
+    tags: ['safety', 'hard-hat', 'ansi', 'ratchet'],
+    specifications: {
+      'Standard': 'ANSI/ISEA Z89.1-2014 Type I',
+      'Suspension': '4-point ratchet',
+      'Material': 'High-density polyethylene',
+      'Adjustable': 'Yes'
+    },
+    createdAt: new Date('2024-01-08'),
+    updatedAt: new Date('2024-02-08')
+  },
+  {
+    id: '16',
+    name: 'Klein Tools Electrician Pliers Set',
+    description: 'Professional electrician pliers set with insulated handles and precision cutting edges.',
+    price: 45999,
+    images: [
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop'
+    ],
+    category: 'Hand Tools',
+    brand: 'Klein Tools',
+    inStock: true,
+    stockQuantity: 18,
+    rating: 4.9,
+    reviewCount: 203,
+    tags: ['pliers', 'electrician', 'insulated', 'precision'],
+    specifications: {
+      'Set Includes': '3 pliers',
+      'Handle': 'Insulated',
+      'Cutting Edge': 'Precision hardened',
+      'Voltage Rating': '1000V'
+    },
+    isPopular: true,
+    createdAt: new Date('2024-01-05'),
+    updatedAt: new Date('2024-02-22')
+  },
+  {
+    id: '17',
+    name: 'Ryobi 40V Leaf Blower',
+    description: 'Powerful cordless leaf blower with variable speed trigger and lightweight design.',
+    price: 79999,
+    originalPrice: 99999,
+    images: [
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop'
+    ],
+    category: 'Power Tools',
+    brand: 'Ryobi',
+    inStock: true,
+    stockQuantity: 10,
+    rating: 4.2,
+    reviewCount: 87,
+    tags: ['leaf-blower', '40v', 'cordless', 'variable-speed'],
+    specifications: {
+      'Voltage': '40V',
+      'Air Speed': '190 MPH',
+      'Air Volume': '500 CFM',
+      'Weight': '4.5 lbs'
+    },
+    isSale: true,
+    createdAt: new Date('2024-01-18'),
+    updatedAt: new Date('2024-02-14')
   }
 ];
 
 // Helper functions
 export const getProductsByCategory = (category: string): Product[] => {
-  return products.filter(product => 
+  return products.filter(product =>
     product.category.toLowerCase() === category.toLowerCase()
   );
 };
@@ -248,4 +424,24 @@ export const searchProducts = (query: string): Product[] => {
     product.description.toLowerCase().includes(lowerQuery) ||
     product.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
   );
+};
+
+export const getSaleProducts = (): Product[] => {
+  return products.filter(product => product.isSale);
+};
+
+export const getInStockProducts = (): Product[] => {
+  return products.filter(product => product.inStock);
+};
+
+export const getAllCategories = (): string[] => {
+  const categorySet = new Set(products.map(product => product.category));
+  return Array.from(categorySet).sort();
+};
+
+export const getAllBrands = (): string[] => {
+  const brandSet = new Set(
+    products.map(product => product.brand).filter(brand => brand !== undefined)
+  );
+  return Array.from(brandSet).sort();
 };

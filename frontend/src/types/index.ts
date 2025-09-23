@@ -16,6 +16,7 @@ export interface Product {
   specifications?: { [key: string]: string };
   isPopular?: boolean;
   isFeatured?: boolean;
+  isSale?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

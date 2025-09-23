@@ -1,68 +1,66 @@
-# SmartTools Hub 🔧
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ae6d418d-06df-47c8-ba51-3a9451041d35/deploy-status)](https://app.netlify.com/projects/smarttoolshub/deploys)
 
-A modern, full-stack e-commerce platform for professional tools and hardware, built with React (TypeScript) and NestJS, focusing on the Nigerian market.
+# SmartTools Hub
 
-![SmartTools Hub Homepage](https://github.com/user-attachments/assets/25e0fc10-6e4d-43f6-8c1d-af3d8847abbb)
+A modern e-commerce platform for professional tools and hardware, built with React and TypeScript.
 
-## 🌟 Features
-
-### Frontend (React + TypeScript)
-- **Modern, Responsive Design** - Professional UI with mobile-first approach
-- **Product Catalog** - Advanced filtering, search, and category navigation
-- **Shopping Cart** - Real-time cart management with quantity controls
-- **Nigerian Market Focus** - Pay-on-Delivery, Naira currency, local shipping
-- **Performance Optimized** - Built with Vite for fast development and builds
-
-### Core E-commerce Features
-- ✅ **Homepage** - Hero section, features, categories showcase
-- ✅ **Products Page** - Search, filtering, product grid with ratings and pricing
-- ✅ **Shopping Cart** - Add/remove items, quantity management, order summary
-- 🚧 **Checkout Flow** - Nigerian address system (State/LGA), Pay-on-Delivery
-- 🚧 **Admin Portal** - Product and order management
-- 🚧 **User Accounts** - Registration, login, order history
-
-## 🛠️ Tech Stack
+## Features
 
 ### Frontend
-- **React 19** with TypeScript
-- **Vite** for build tooling
-- **React Router** for navigation
-- **Custom CSS** with responsive design
-- **Lucide React** for icons
+- Modern, responsive design with mobile-first approach
+- Product catalog with search, filtering, and category navigation
+- Shopping cart with real-time management and quantity controls
+- Performance optimized with Vite build tooling
+
+### Core E-commerce Features
+- Homepage with hero section and category showcase
+- Products page with search, filtering, and product grid
+- Shopping cart with add/remove items and order summary
+- Planned: Checkout flow, admin portal, and user accounts
+
+## Tech Stack
+
+### Frontend
+- React 19 with TypeScript
+- Vite for build tooling
+- React Router for navigation
+- TailwindCSS for styling
+- Lucide React for icons
+- Zustand for state management
+- Axios for HTTP requests
 
 ### Backend (Planned)
-- **NestJS** with TypeScript
-- **MySQL** database
-- **JWT** authentication
-- **RESTful APIs**
+- NestJS with TypeScript
+- MySQL database
+- JWT authentication
+- RESTful APIs
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
-1. **Clone the repository**
+1. Clone the repository
    ```bash
-   git clone https://github.com/FaireNation/smarttoolshub.git
+   git clone <repository-url>
    cd smarttoolshub
    ```
 
-2. **Install frontend dependencies**
+2. Install frontend dependencies
    ```bash
    cd frontend
    npm install
    ```
 
-3. **Start the development server**
+3. Start the development server
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
-   Navigate to `http://localhost:5173`
+4. Open your browser and navigate to `http://localhost:5173`
 
 ### Build for Production
 ```bash
@@ -71,11 +69,10 @@ npm run build
 npm run preview
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 smarttoolshub/
-├── backend/                 # NestJS backend (coming soon)
 ├── frontend/               # React frontend
 │   ├── src/
 │   │   ├── components/     # Reusable UI components
@@ -92,46 +89,28 @@ smarttoolshub/
 └── README.md
 ```
 
-## 💰 Nigerian E-commerce Features
-
-- **Pay-on-Delivery** - No upfront payment required
-- **Nigerian Naira (₦)** - All prices in local currency
-- **Free Shipping** - On orders above ₦50,000
-- **Local Delivery** - Delivery across Nigeria
-- **State/LGA System** - Nigerian address format support
-
-## 🎨 Design System
-
-The application uses a modern, professional design system with:
-- **Clean Color Palette** - Blue primary with gray accents
-- **Consistent Typography** - Inter font family
-- **Responsive Grid** - Mobile-first layout
-- **Interactive Elements** - Hover effects and transitions
-- **Accessibility** - ARIA labels and keyboard navigation
-
-## 📱 Pages
+## Application Features
 
 ### Homepage
-- Hero section with compelling value proposition
-- Feature highlights (Free Delivery, Quality Guarantee, Pay-on-Delivery)
+- Hero section with value proposition
+- Feature highlights
 - Category showcase with product counts
-- Professional footer with company information
+- Professional footer
 
-### Products Page  
-- Advanced product search and filtering
+### Products Page
+- Product search and filtering
 - Category-based filtering
-- Product cards with ratings, pricing, and sale indicators
+- Product cards with ratings and pricing
 - Stock status management
 - Responsive product grid
 
 ### Shopping Cart
 - Real-time cart updates
-- Quantity management with +/- controls
-- Order summary with shipping calculations
-- Free shipping progress indicator
-- Pay-on-Delivery messaging
+- Quantity management
+- Order summary with calculations
+- Responsive design
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -139,23 +118,6 @@ The application uses a modern, professional design system with:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Built with modern React and TypeScript best practices
-- Designed for the Nigerian e-commerce market
-- Professional tools and hardware focus
-- Pay-on-Delivery integration ready
-
-## 📞 Contact
-
-- **Website**: [smarttoolshub.ng](https://smarttoolshub.ng) (coming soon)
-- **Email**: info@smarttoolshub.ng
-- **Phone**: +234 803 123 4567
-
----
-
-**SmartTools Hub** - *Professional Tools for Every Project* 🔧
+This project is licensed under the MIT License.

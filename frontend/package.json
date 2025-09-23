@@ -10,18 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroui/react": "2.8.4",
+    "@heroui/theme": "2.4.22",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/postcss": "^4.1.13",
     "@types/react-router-dom": "^5.3.3",
     "autoprefixer": "^10.4.21",
     "axios": "^1.12.2",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.23.16",
     "lucide-react": "^0.544.0",
     "postcss": "^8.5.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.1",
-    "tailwindcss": "^4.1.13",
+    "tailwindcss": "^3.4.17",
     "zustand": "^5.0.8"
   },
   "devDependencies": {

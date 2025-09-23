@@ -1,7 +1,8 @@
 import React from 'react';
-import { cn } from '../../utils/cn';
+import { Input as NextUIInput, InputProps as NextUIInputProps } from "@heroui/react";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+// Extended interface to maintain compatibility
+interface InputProps extends NextUIInputProps {
   label?: string;
   error?: string;
   helperText?: string;
@@ -13,45 +14,57 @@ const Input: React.FC<InputProps> = ({
   error,
   helperText,
   icon,
-  className,
-  id,
+  variant = 'bordered',
+  size = 'md',
+  radius = 'md',
+  color = 'primary',
   ...props
 }) => {
-  const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
-
   return (
-    <div className="w-full">
+    <div className="space-y-1">
       {label && (
-        <label
-          htmlFor={inputId}
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
+        <label className="text-sm font-medium text-foreground">
           {label}
         </label>
       )}
-      <div className="relative">
-        {icon && (
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            {icon}
-          </div>
-        )}
-        <input
-          id={inputId}
-          className={cn(
-            'w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200',
-            error && 'border-red-500 focus:ring-red-500',
-            icon && 'pl-10',
-            className
-          )}
-          {...props}
-        />
-      </div>
-      {error && (
-        <p className="mt-1 text-sm text-red-600">{error}</p>
-      )}
-      {helperText && !error && (
-        <p className="mt-1 text-sm text-gray-500">{helperText}</p>
-      )}
+      <NextUIInput
+        variant={variant}
+        size={size}
+        radius={radius}
+        color={color}
+        isInvalid={!!error}
+        errorMessage={error}
+        description={helperText}
+        startContent={icon}
+        classNames={{
+          base: "w-full",
+          mainWrapper: "h-full",
+          input: [
+            "bg-transparent",
+            "text-black/90 dark:text-white/90",
+            "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+            "focus:outline-none",
+          ],
+          innerWrapper: "bg-transparent",
+          inputWrapper: [
+            "shadow-sm",
+            "bg-default-200/50",
+            "dark:bg-default/60",
+            "backdrop-blur-xl",
+            "backdrop-saturate-200",
+            "hover:bg-default-200/70",
+            "dark:hover:bg-default/70",
+            "group-data-[focused=true]:bg-default-200/50",
+            "dark:group-data-[focused=true]:bg-default/60",
+            "!cursor-text",
+            "border-2",
+            "border-transparent",
+            "group-data-[focused=true]:border-primary",
+            "group-data-[invalid=true]:border-danger",
+          ],
+        }}
+        {...props}
+      />
     </div>
   );
 };

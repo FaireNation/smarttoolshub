@@ -1,37 +1,24 @@
 import React from 'react';
-import { cn } from '../../utils/cn';
+import { Card as NextUICard, CardProps as NextUICardProps } from "@heroui/react";
 
-interface CardProps {
+// Extended interface to maintain compatibility
+interface CardProps extends NextUICardProps {
   children: React.ReactNode;
   className?: string;
-  padding?: 'none' | 'sm' | 'md' | 'lg';
-  hover?: boolean;
 }
 
 const Card: React.FC<CardProps> = ({
   children,
-  className,
-  padding = 'md',
-  hover = false
+  className = '',
+  ...props
 }) => {
-  const paddingClasses = {
-    none: '',
-    sm: 'p-3',
-    md: 'p-4',
-    lg: 'p-6'
-  };
-
   return (
-    <div
-      className={cn(
-        'bg-white rounded-lg shadow-md border border-gray-200',
-        paddingClasses[padding],
-        hover && 'transition-shadow duration-200 hover:shadow-lg',
-        className
-      )}
+    <NextUICard
+      className={`hover:shadow-lg transition-all duration-300 ${className}`}
+      {...props}
     >
       {children}
-    </div>
+    </NextUICard>
   );
 };
 
