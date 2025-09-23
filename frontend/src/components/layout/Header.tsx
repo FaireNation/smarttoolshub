@@ -10,12 +10,8 @@ import {
     NavbarMenuToggle,
     Button,
     Badge,
-    Dropdown,
-    DropdownTrigger,
-    DropdownMenu,
-    DropdownItem,
 } from "@heroui/react";
-import { ShoppingCart, User, Menu, Package, Wrench } from "lucide-react";
+import { ShoppingCart, Menu, Wrench } from "lucide-react";
 import { useCart } from '../../context/CartContext';
 
 const Header: React.FC = () => {
@@ -110,28 +106,6 @@ const Header: React.FC = () => {
                             <ShoppingCart size={20} />
                         </Button>
                     </Badge>
-                </NavbarItem>
-
-                {/* User menu */}
-                <NavbarItem>
-                    <Dropdown placement="bottom-end">
-                        <DropdownTrigger>
-                            <Button isIconOnly variant="light" size="sm">
-                                <User size={20} />
-                            </Button>
-                        </DropdownTrigger>
-                        <DropdownMenu aria-label="User menu actions">
-                            <DropdownItem key="profile" startContent={<User size={16} />}>
-                                My Profile
-                            </DropdownItem>
-                            <DropdownItem key="orders" startContent={<Package size={16} />}>
-                                My Orders
-                            </DropdownItem>
-                            <DropdownItem key="logout" className="text-danger" color="danger">
-                                Sign Out
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
                 </NavbarItem>
             </NavbarContent>
 
