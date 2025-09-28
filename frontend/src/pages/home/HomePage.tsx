@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import {
     Button,
@@ -6,6 +6,7 @@ import {
     CardBody,
     CardFooter,
     Badge,
+    Skeleton,
 } from "@heroui/react";
 import {
     Truck,
@@ -18,6 +19,9 @@ import {
 import Layout from '../../components/layout/Layout';
 import { OptimizedImage } from '../../components/ui';
 import { categories } from '../../data/categories';
+
+// Lazy load heavy components to improve First Contentful Paint
+const LazyTestimonialsSection = lazy(() => import('./TestimonialsSection'));
 
 const HomePage: React.FC = () => {
     // Color mapping for proper Tailwind CSS classes
@@ -96,7 +100,7 @@ const HomePage: React.FC = () => {
 
     return (
         <Layout>
-            {/* Hero Section */}
+            {/* Hero Section - Above the fold content */}
             <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden" aria-label="Welcome section">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" aria-hidden="true" />
@@ -141,7 +145,7 @@ const HomePage: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Hero Image */}
+                        {/* Hero Image - Optimized with high priority for LCP */}
                         <div className="relative">
                             <div className="relative z-10">
                                 <OptimizedImage
@@ -150,7 +154,8 @@ const HomePage: React.FC = () => {
                                     className="rounded-2xl shadow-2xl"
                                     width={580}
                                     height={360}
-                                    priority
+                                    priority={true}
+                                    loading="eager"
                                     sizes="(max-width: 768px) 100vw, 580px"
                                 />
                             </div>
@@ -192,7 +197,7 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Categories Section */}
+            {/* Categories Section - Optimized images */}
             <section className="py-16 lg:py-24 bg-background" aria-labelledby="categories-heading">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-16">
@@ -205,7 +210,7 @@ const HomePage: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
-                        {categories.map((category) => {
+                        {categories.map((category, index) => {
                             const IconComponent = category.icon;
                             return (
                                 <Card
@@ -216,13 +221,14 @@ const HomePage: React.FC = () => {
                                     role="listitem"
                                     aria-label={`Browse ${category.name} - ${category.desc} (${category.count} products)`}
                                 >
-                                    <div className="relative overflow-hidden">
+                                    <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
                                         <OptimizedImage
                                             src={category.image}
                                             alt={`${category.name} category featuring various ${category.desc.toLowerCase()}`}
-                                            className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                             width={400}
                                             height={300}
+                                            loading={index < 4 ? "eager" : "lazy"}
                                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                         />
                                         <div className={`absolute inset-0 ${category.color} opacity-80 group-hover:opacity-70 transition-opacity`} aria-hidden="true" />
@@ -255,53 +261,34 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Testimonials Section */}
-            <section className="py-16 lg:py-24 bg-content1" aria-labelledby="testimonials-heading">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="text-center mb-16">
-                        <h2 id="testimonials-heading" className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                            What Our Customers Say
-                        </h2>
-                        <p className="text-lg text-default-600 max-w-2xl mx-auto">
-                            Don't just take our word for it - hear from our satisfied customers
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6" role="list">
-                        {testimonials.map((testimonial, index) => (
-                            <Card key={index} className="group hover:shadow-lg transition-shadow duration-300" role="listitem">
-                                <CardBody className="p-6">
-                                    <div className="flex items-center gap-1 mb-4" role="img" aria-label={`${testimonial.rating} out of 5 stars`}>
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star
-                                                key={i}
-                                                size={16}
-                                                className={i < testimonial.rating ? 'text-warning fill-current' : 'text-default-300'}
-                                                aria-hidden="true"
-                                            />
-                                        ))}
-                                    </div>
-                                    <blockquote className="text-default-700 mb-4 italic">"{testimonial.content}"</blockquote>
+            {/* Lazy-loaded Testimonials Section */}
+            <Suspense fallback={
+                <section className="py-16 lg:py-24 bg-content1">
+                    <div className="max-w-7xl mx-auto px-4">
+                        <div className="text-center mb-16">
+                            <Skeleton className="h-8 w-80 mx-auto mb-4" />
+                            <Skeleton className="h-4 w-96 mx-auto" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {[1, 2, 3].map((i) => (
+                                <Card key={i} className="p-6">
+                                    <Skeleton className="h-4 w-full mb-4" />
+                                    <Skeleton className="h-16 w-full mb-4" />
                                     <div className="flex items-center gap-3">
-                                        <OptimizedImage
-                                            src={testimonial.avatar}
-                                            alt={`${testimonial.name} profile picture`}
-                                            className="w-10 h-10 rounded-full"
-                                            width={40}
-                                            height={40}
-                                            sizes="40px"
-                                        />
+                                        <Skeleton className="h-10 w-10 rounded-full" />
                                         <div>
-                                            <p className="font-semibold text-sm">{testimonial.name}</p>
-                                            <p className="text-xs text-default-600">{testimonial.role}</p>
+                                            <Skeleton className="h-4 w-24 mb-1" />
+                                            <Skeleton className="h-3 w-16" />
                                         </div>
                                     </div>
-                                </CardBody>
-                            </Card>
-                        ))}
+                                </Card>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            }>
+                <LazyTestimonialsSection testimonials={testimonials} />
+            </Suspense>
 
             {/* CTA Section */}
             <section className="py-16 lg:py-20 bg-primary" aria-labelledby="cta-heading">

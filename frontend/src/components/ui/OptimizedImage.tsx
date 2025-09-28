@@ -28,17 +28,22 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
             // Extract the photo ID from Unsplash URL
             const photoId = originalUrl.match(/photo-([a-zA-Z0-9_-]+)/)?.[1];
             if (photoId) {
-                return `https://images.unsplash.com/photo-${photoId}?w=${targetWidth}&h=${targetHeight}&fit=crop&auto=format&q=75`;
+                return `https://images.unsplash.com/photo-${photoId}?w=${targetWidth}&h=${targetHeight}&fit=crop&auto=format&q=80&dpr=1`;
             }
+        }
+        if (originalUrl.includes('pravatar.cc')) {
+            return `${originalUrl}?w=${targetWidth}&h=${targetHeight}`;
         }
         return originalUrl;
     };
 
-    // Generate srcSet for responsive images
+    // Generate srcSet for responsive images with proper aspect ratios
     const generateSrcSet = (baseUrl: string, targetWidth: number, targetHeight: number) => {
+        const optimizedUrl1x = getOptimizedImageUrl(baseUrl, targetWidth, targetHeight);
+        const optimizedUrl2x = getOptimizedImageUrl(baseUrl, targetWidth * 2, targetHeight * 2);
         return [
-            `${getOptimizedImageUrl(baseUrl, targetWidth, targetHeight)} 1x`,
-            `${getOptimizedImageUrl(baseUrl, targetWidth * 2, targetHeight * 2)} 2x`
+            `${optimizedUrl1x} 1x`,
+            `${optimizedUrl2x} 2x`
         ].join(', ');
     };
 
@@ -57,6 +62,15 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
             sizes={sizes || `${width}px`}
             style={{
                 aspectRatio: `${width}/${height}`,
+                width: '100%',
+                height: 'auto',
+            }}
+            onError={(e) => {
+                // Fallback to original source on error
+                const target = e.target as HTMLImageElement;
+                if (target.src !== src) {
+                    target.src = src;
+                }
             }}
         />
     );

@@ -48,11 +48,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
     // Grid view (default)
     return (
         <Card radius="none" className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden" style={{ aspectRatio: '2/1' }}>
                 <OptimizedImage
                     src={product.images[0] || 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64'}
                     alt={`${product.name}${product.brand ? ` by ${product.brand}` : ''} - Professional tool`}
-                    className="w-full object-cover h-[200px]"
+                    className="w-full h-full object-cover"
                     width={400}
                     height={200}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -79,26 +79,30 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
                 {/* Quick Actions */}
                 <div className="absolute top-2 right-2 flex flex-col gap-2 z-10" role="group" aria-label="Product actions">
-                    <Button
-                        isIconOnly
-                        size="sm"
-                        variant="solid"
-                        className="bg-white hover:bg-white shadow-md hover:shadow-lg z-10"
-                        onClick={() => onQuickView?.(product)}
-                        aria-label={`Quick view ${product.name}`}
-                    >
-                        <Eye size={16} className="text-default-700" aria-hidden="true" />
-                    </Button>
-                    <Button
-                        isIconOnly
-                        size="sm"
-                        variant="solid"
-                        className="bg-white hover:bg-white shadow-md hover:shadow-lg z-10"
-                        onClick={() => onAddToWishlist?.(product)}
-                        aria-label={`Add ${product.name} to wishlist`}
-                    >
-                        <Heart size={16} className="text-default-700" aria-hidden="true" />
-                    </Button>
+                    {onQuickView && (
+                        <Button
+                            isIconOnly
+                            size="sm"
+                            variant="solid"
+                            className="bg-white hover:bg-white shadow-md hover:shadow-lg z-10"
+                            onClick={() => onQuickView(product)}
+                            aria-label={`Quick view ${product.name}`}
+                        >
+                            <Eye size={16} className="text-default-700" aria-hidden="true" />
+                        </Button>
+                    )}
+                    {onAddToWishlist && (
+                        <Button
+                            isIconOnly
+                            size="sm"
+                            variant="solid"
+                            className="bg-white hover:bg-white shadow-md hover:shadow-lg z-10"
+                            onClick={() => onAddToWishlist(product)}
+                            aria-label={`Add ${product.name} to wishlist`}
+                        >
+                            <Heart size={16} className="text-default-700" aria-hidden="true" />
+                        </Button>
+                    )}
                 </div>
             </div>
 
