@@ -5,7 +5,6 @@ import {
     Card,
     CardBody,
     CardFooter,
-    Image,
     Badge,
 } from "@heroui/react";
 import {
@@ -17,6 +16,7 @@ import {
     ArrowRight,
 } from "lucide-react";
 import Layout from '../../components/layout/Layout';
+import { OptimizedImage } from '../../components/ui';
 import { categories } from '../../data/categories';
 
 const HomePage: React.FC = () => {
@@ -45,25 +45,25 @@ const HomePage: React.FC = () => {
 
     const features = [
         {
-            icon: <Truck size={24} />,
+            icon: <Truck size={24} aria-hidden="true" />,
             title: "Free Delivery",
             desc: "Free delivery on orders above ₦50,000",
             color: "success" as const,
         },
         {
-            icon: <Shield size={24} />,
+            icon: <Shield size={24} aria-hidden="true" />,
             title: "Quality Guarantee",
             desc: "All products with manufacturer warranty",
             color: "primary" as const,
         },
         {
-            icon: <CreditCard size={24} />,
+            icon: <CreditCard size={24} aria-hidden="true" />,
             title: "Pay on Delivery",
             desc: "Convenient payment when order arrives",
             color: "secondary" as const,
         },
         {
-            icon: <Headphones size={24} />,
+            icon: <Headphones size={24} aria-hidden="true" />,
             title: "Expert Support",
             desc: "Get help choosing the right tools",
             color: "warning" as const,
@@ -97,9 +97,9 @@ const HomePage: React.FC = () => {
     return (
         <Layout>
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden">
+            <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden" aria-label="Welcome section">
                 {/* Background Pattern */}
-                <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
+                <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" aria-hidden="true" />
 
                 <div className="relative max-w-7xl mx-auto px-4 py-20 lg:py-28">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -123,7 +123,8 @@ const HomePage: React.FC = () => {
                                     to="/products"
                                     size="lg"
                                     className="bg-white text-primary-600 font-semibold hover:bg-primary-50"
-                                    endContent={<ArrowRight size={20} />}
+                                    endContent={<ArrowRight size={20} aria-hidden="true" />}
+                                    aria-label="Shop all products"
                                 >
                                     Shop Now
                                 </Button>
@@ -133,6 +134,7 @@ const HomePage: React.FC = () => {
                                     variant="bordered"
                                     size="lg"
                                     className="border-white text-white font-semibold hover:bg-white/10"
+                                    aria-label="Learn more about SmartTools Hub"
                                 >
                                     Learn More
                                 </Button>
@@ -142,12 +144,14 @@ const HomePage: React.FC = () => {
                         {/* Hero Image */}
                         <div className="relative">
                             <div className="relative z-10">
-                                <Image
-                                    src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop"
-                                    alt="Professional Tools"
+                                <OptimizedImage
+                                    src="https://images.unsplash.com/photo-1581578731548-c64695cc6952"
+                                    alt="Professional construction tools including drill, hammer, and measuring equipment displayed on a workbench"
                                     className="rounded-2xl shadow-2xl"
                                     width={580}
                                     height={360}
+                                    priority
+                                    sizes="(max-width: 768px) 100vw, 580px"
                                 />
                             </div>
                         </div>
@@ -156,10 +160,10 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Features Section */}
-            <section className="py-16 lg:py-24 bg-content1">
+            <section className="py-16 lg:py-24 bg-content1" aria-labelledby="features-heading">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                        <h2 id="features-heading" className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                             Why Choose SmartTools Hub?
                         </h2>
                         <p className="text-lg text-default-600 max-w-2xl mx-auto">
@@ -167,11 +171,11 @@ const HomePage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
                         {features.map((feature, index) => {
                             const colors = getFeatureColors(feature.color);
                             return (
-                                <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                                <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1" role="listitem">
                                     <CardBody className="p-6 text-center">
                                         <div className={`w-16 h-16 rounded-2xl ${colors.bg} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
                                             <div className={colors.text}>
@@ -189,10 +193,10 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Categories Section */}
-            <section className="py-16 lg:py-24 bg-background">
+            <section className="py-16 lg:py-24 bg-background" aria-labelledby="categories-heading">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                        <h2 id="categories-heading" className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                             Shop by Category
                         </h2>
                         <p className="text-lg text-default-600 max-w-2xl mx-auto">
@@ -200,7 +204,7 @@ const HomePage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
                         {categories.map((category) => {
                             const IconComponent = category.icon;
                             return (
@@ -209,15 +213,20 @@ const HomePage: React.FC = () => {
                                     className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
                                     as={Link}
                                     to={`/categories/${category.slug}`}
+                                    role="listitem"
+                                    aria-label={`Browse ${category.name} - ${category.desc} (${category.count} products)`}
                                 >
                                     <div className="relative overflow-hidden">
-                                        <Image
+                                        <OptimizedImage
                                             src={category.image}
-                                            alt={category.name}
+                                            alt={`${category.name} category featuring various ${category.desc.toLowerCase()}`}
                                             className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                            width={400}
+                                            height={300}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                                         />
-                                        <div className={`absolute inset-0 ${category.color} opacity-80 group-hover:opacity-70 transition-opacity`} />
-                                        <div className="absolute inset-0 flex items-center justify-center">
+                                        <div className={`absolute inset-0 ${category.color} opacity-80 group-hover:opacity-70 transition-opacity`} aria-hidden="true" />
+                                        <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
                                             <div className="text-white">
                                                 <IconComponent size={32} />
                                             </div>
@@ -226,6 +235,7 @@ const HomePage: React.FC = () => {
                                             content={category.count}
                                             color="primary"
                                             className="absolute top-4 right-1"
+                                            aria-label={`${category.count} products available`}
                                         >
                                             <div className="w-6 h-6" />
                                         </Badge>
@@ -246,10 +256,10 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Testimonials Section */}
-            <section className="py-16 lg:py-24 bg-content1">
+            <section className="py-16 lg:py-24 bg-content1" aria-labelledby="testimonials-heading">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                        <h2 id="testimonials-heading" className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                             What Our Customers Say
                         </h2>
                         <p className="text-lg text-default-600 max-w-2xl mx-auto">
@@ -257,25 +267,29 @@ const HomePage: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6" role="list">
                         {testimonials.map((testimonial, index) => (
-                            <Card key={index} className="group hover:shadow-lg transition-shadow duration-300">
+                            <Card key={index} className="group hover:shadow-lg transition-shadow duration-300" role="listitem">
                                 <CardBody className="p-6">
-                                    <div className="flex items-center gap-1 mb-4">
+                                    <div className="flex items-center gap-1 mb-4" role="img" aria-label={`${testimonial.rating} out of 5 stars`}>
                                         {[...Array(5)].map((_, i) => (
                                             <Star
                                                 key={i}
                                                 size={16}
                                                 className={i < testimonial.rating ? 'text-warning fill-current' : 'text-default-300'}
+                                                aria-hidden="true"
                                             />
                                         ))}
                                     </div>
-                                    <p className="text-default-700 mb-4 italic">"{testimonial.content}"</p>
+                                    <blockquote className="text-default-700 mb-4 italic">"{testimonial.content}"</blockquote>
                                     <div className="flex items-center gap-3">
-                                        <Image
+                                        <OptimizedImage
                                             src={testimonial.avatar}
-                                            alt={testimonial.name}
+                                            alt={`${testimonial.name} profile picture`}
                                             className="w-10 h-10 rounded-full"
+                                            width={40}
+                                            height={40}
+                                            sizes="40px"
                                         />
                                         <div>
                                             <p className="font-semibold text-sm">{testimonial.name}</p>
@@ -290,9 +304,9 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-16 lg:py-20 bg-primary">
+            <section className="py-16 lg:py-20 bg-primary" aria-labelledby="cta-heading">
                 <div className="max-w-4xl mx-auto px-4 text-center text-white">
-                    <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+                    <h2 id="cta-heading" className="text-3xl lg:text-4xl font-bold mb-6">
                         Ready to Start Your Next Project?
                     </h2>
                     <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
@@ -305,7 +319,8 @@ const HomePage: React.FC = () => {
                         to="/products"
                         size="lg"
                         className="bg-white text-primary-600 mt-5 font-semibold hover:bg-primary-50"
-                        endContent={<ArrowRight size={20} />}
+                        endContent={<ArrowRight size={20} aria-hidden="true" />}
+                        aria-label="Browse all products"
                     >
                         Explore Products
                     </Button>

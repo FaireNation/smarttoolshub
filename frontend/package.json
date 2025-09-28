@@ -18,6 +18,7 @@
     "@heroui/react": "2.6.11",
     "@heroui/theme": "2.4.5",
     "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^5.0.2",
     "autoprefixer": "^10.4.21",
     "axios": "^1.12.2",
     "clsx": "^2.1.1",
@@ -28,13 +29,13 @@
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.1",
     "tailwindcss": "^3.4.17",
-    "zustand": "^5.0.8",
+    "typescript": "~5.8.3",
     "vite": "^7.1.6",
-    "@vitejs/plugin-react": "^5.0.2",
-    "typescript": "~5.8.3"
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
+    "@types/node": "^24.5.2",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "eslint": "^9.35.0",

@@ -15,10 +15,10 @@ import { categories } from '../../data/categories';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="relative overflow-hidden pt-20">
+        <footer className="relative overflow-hidden pt-20" role="contentinfo">
             {/* Background Pattern */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10"></div>
-            <div className="absolute inset-0 bg-content1/95 backdrop-blur-sm"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10" aria-hidden="true"></div>
+            <div className="absolute inset-0 bg-content1/95 backdrop-blur-sm" aria-hidden="true"></div>
 
             {/* Main Footer Content */}
             <div className="relative max-w-7xl mx-auto px-4 py-16">
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
                     <div className="lg:col-span-2 space-y-6">
                         <div className="flex items-center space-x-3">
                             <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-xl shadow-lg">
-                                <Wrench size={24} className="text-white" />
+                                <Wrench size={24} className="text-white" aria-hidden="true" />
                             </div>
                             <span className="font-bold text-2xl text-foreground">SmartToolsHub</span>
                         </div>
@@ -39,25 +39,57 @@ const Footer: React.FC = () => {
                         </p>
 
                         {/* Social Media */}
-                        <div className="flex space-x-3 pt-4">
-                            <Button isIconOnly size="lg" variant="flat" className="bg-default-100 hover:bg-primary hover:text-white transition-colors">
-                                <Facebook size={20} />
+                        <div className="flex space-x-3 pt-4" role="group" aria-label="Social media links">
+                            <Button
+                                isIconOnly
+                                size="lg"
+                                variant="flat"
+                                className="bg-default-100 hover:bg-primary hover:text-white transition-colors"
+                                aria-label="Follow us on Facebook"
+                                as="a"
+                                href="#"
+                            >
+                                <Facebook size={20} aria-hidden="true" />
                             </Button>
-                            <Button isIconOnly size="lg" variant="flat" className="bg-default-100 hover:bg-primary hover:text-white transition-colors">
-                                <Twitter size={20} />
+                            <Button
+                                isIconOnly
+                                size="lg"
+                                variant="flat"
+                                className="bg-default-100 hover:bg-primary hover:text-white transition-colors"
+                                aria-label="Follow us on Twitter"
+                                as="a"
+                                href="#"
+                            >
+                                <Twitter size={20} aria-hidden="true" />
                             </Button>
-                            <Button isIconOnly size="lg" variant="flat" className="bg-default-100 hover:bg-primary hover:text-white transition-colors">
-                                <Instagram size={20} />
+                            <Button
+                                isIconOnly
+                                size="lg"
+                                variant="flat"
+                                className="bg-default-100 hover:bg-primary hover:text-white transition-colors"
+                                aria-label="Follow us on Instagram"
+                                as="a"
+                                href="#"
+                            >
+                                <Instagram size={20} aria-hidden="true" />
                             </Button>
-                            <Button isIconOnly size="lg" variant="flat" className="bg-default-100 hover:bg-primary hover:text-white transition-colors">
-                                <Linkedin size={20} />
+                            <Button
+                                isIconOnly
+                                size="lg"
+                                variant="flat"
+                                className="bg-default-100 hover:bg-primary hover:text-white transition-colors"
+                                aria-label="Connect with us on LinkedIn"
+                                as="a"
+                                href="#"
+                            >
+                                <Linkedin size={20} aria-hidden="true" />
                             </Button>
                         </div>
                     </div>
 
                     {/* Quick Links */}
-                    <div className="space-y-4">
-                        <h4 className="font-bold text-foreground text-lg mb-6">Quick Links</h4>
+                    <nav className="space-y-4" aria-labelledby="quick-links-heading">
+                        <h4 id="quick-links-heading" className="font-bold text-foreground text-lg mb-6">Quick Links</h4>
                         <ul className="space-y-3">
                             {[
                                 { name: "All Products", path: "/products" },
@@ -70,42 +102,43 @@ const Footer: React.FC = () => {
                                         className="text-default-600 hover:text-primary transition-colors font-medium flex items-center group"
                                     >
                                         <span>{link.name}</span>
-                                        <ArrowRight size={14} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <ArrowRight size={14} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
                                     </Link>
                                 </li>
                             ))}
                         </ul>
-                    </div>
+                    </nav>
 
                     {/* Categories */}
-                    <div className="space-y-4">
-                        <h4 className="font-bold text-foreground text-lg mb-6">Categories</h4>
+                    <nav className="space-y-4" aria-labelledby="categories-heading">
+                        <h4 id="categories-heading" className="font-bold text-foreground text-lg mb-6">Categories</h4>
                         <ul className="space-y-3">
                             {categories.map((category) => (
                                 <li key={category.id}>
                                     <Link
                                         to={`/categories/${category.slug}`}
                                         className="text-default-600 hover:text-primary transition-colors font-medium flex items-center justify-between group"
+                                        aria-label={`Browse ${category.name} category (${category.count} products)`}
                                     >
                                         <span>{category.name}</span>
-                                        <span className="text-xs bg-default-100 text-default-500 px-2 py-1 rounded-full group-hover:bg-primary group-hover:text-white transition-colors">
+                                        <span className="text-xs bg-default-100 text-default-500 px-2 py-1 rounded-full group-hover:bg-primary group-hover:text-white transition-colors" aria-hidden="true">
                                             {category.count}
                                         </span>
                                     </Link>
                                 </li>
                             ))}
                         </ul>
-                    </div>
+                    </nav>
 
                     {/* Contact Info */}
-                    <div className="space-y-4">
-                        <h4 className="font-bold text-foreground text-lg mb-6">Get In Touch</h4>
+                    <address className="space-y-4 not-italic" aria-labelledby="contact-heading">
+                        <h4 id="contact-heading" className="font-bold text-foreground text-lg mb-6">Get In Touch</h4>
                         <div className="space-y-4">
                             <Card className="bg-default-50 border-none shadow-sm">
                                 <CardBody className="p-4">
                                     <div className="flex items-start space-x-3">
                                         <div className="flex items-center justify-center w-8 h-8 bg-primary/10 rounded-lg flex-shrink-0 mt-0.5">
-                                            <MapPin size={16} className="text-primary" />
+                                            <MapPin size={16} className="text-primary" aria-hidden="true" />
                                         </div>
                                         <div>
                                             <p className="font-medium text-foreground text-sm">Location</p>
@@ -119,17 +152,19 @@ const Footer: React.FC = () => {
                                 <CardBody className="p-4">
                                     <div className="flex items-start space-x-3">
                                         <div className="flex items-center justify-center w-8 h-8 bg-warning/10 rounded-lg flex-shrink-0 mt-0.5">
-                                            <Mail size={16} className="text-warning" />
+                                            <Mail size={16} className="text-warning" aria-hidden="true" />
                                         </div>
                                         <div>
                                             <p className="font-medium text-foreground text-sm">Email</p>
-                                            <p className="text-default-600 text-sm">support@smarttoolshub.com</p>
+                                            <a href="mailto:support@smarttoolshub.com" className="text-default-600 text-sm hover:text-primary transition-colors">
+                                                support@smarttoolshub.com
+                                            </a>
                                         </div>
                                     </div>
                                 </CardBody>
                             </Card>
                         </div>
-                    </div>
+                    </address>
                 </div>
             </div>
 
@@ -146,10 +181,6 @@ const Footer: React.FC = () => {
                             </span>
                         </p>
                     </div>
-                </div>
-
-                {/* Trust Badges */}
-                <div className="flex items-center justify-center gap-8 mt-8 pt-8 border-t border-divider">
                 </div>
             </div>
         </footer>
